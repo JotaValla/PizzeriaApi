@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pizza</title>
+</head>
+<body>
+  <code id="pizzas">
+
+  </code>
+    <script>
+        const pizzaContent=document.getElementById("pizzas")
+        const url="http://localhost:8080/api/pizzas/available"
+        const auth="Basic dXNlcjplZDAyODMwOC1iMTAwLTQ2NzAtOTJlYi1jZTQxYzIyM2E5ZjA="
+        fetch(url, {
+          "headers": {
+            "Authorization": auth
+          }})
+            .then(response => response.json())
+            .then(result => {
+              console.log(result)
+              pizzaContent.textContent = JSON.stringify(result);
+            });
+    </script>
+</body>
