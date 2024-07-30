@@ -42,6 +42,8 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.PUT).hasRole("ADMIN")
                         .requestMatchers("api/orders/random").hasAuthority("random_order")
                         .requestMatchers("api/orders/**").hasRole("ADMIN")
+                        //para spring doc with swagger
+                        .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
                         .anyRequest()
                         .authenticated()
                         .and()
